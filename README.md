@@ -1,1 +1,1 @@
-# mindcircuit15d - SAMPLE APP
+# A SAMPLE JAVA APP 
