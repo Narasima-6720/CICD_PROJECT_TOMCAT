@@ -1,2 +1,2 @@
 Hi hello
-Exception handled
+Exception handled ok
