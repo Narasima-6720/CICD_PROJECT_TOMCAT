@@ -22,7 +22,7 @@
     <!-- Custom CSS -->
   </head>
   <body>
-<h1>The webhook detected</h1>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div class="container">
