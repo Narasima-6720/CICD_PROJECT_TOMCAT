@@ -17,12 +17,12 @@
 	<distributionManagement>
 		 <snapshotRepository>
 		    <id>NexusRepo</id>
-		    <url>http://54.205.185.238:8081/repository/batch15-repo-snapshot/</url>
+		    <url>http://13.201.166.145:8081/repository/Narasimha-snapshot/</url>
 		 </snapshotRepository>
 		
 		<repository>
-		    <id>NexusRepo</id>
-		    <url>http://54.205.185.238:8081/repository/batch15-repo-release/</url>
+		    <id>Nexus-Repo</id>
+		    <url>http://13.201.166.145:8081/repository/Narasimha-release/</url>
 		</repository>
   	</distributionManagement>
 
