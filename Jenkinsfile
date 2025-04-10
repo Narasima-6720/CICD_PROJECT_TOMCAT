@@ -1,26 +1,32 @@
 pipeline {
     agent any
+    
+    triggers{
+        githubPush()
+    }
 
     stages {
-        stage('Github checkout') {
+        stage('CLONE FROM GITHUB') {
             steps {
-                echo 'checkout the code from github'
-                git branch: 'main', url: 'https://github.com/Narasima-6720/TOMACT_PROJECT.git'
+                git branch: 'main', url: 'https://github.com/Narasima-6720/CICD_PROJECT_TOMCAT.git'
+                echo 'successfully cloned the repo'
             }
         }
         
-        stage('Build with maven') {
+        stage('Build the code') {
             steps {
-                echo 'Building with maven'
                 sh 'mvn clean install'
+                echo 'Successfully build....'
+            }
+        }
+         
+          stage('Deploy to the container') {
+            steps {
+              deploy adapters: [tomcat9(credentialsId: 'my-tomcat', path: '', url: 'http://ec2-13-203-205-64.ap-south-1.compute.amazonaws.com:8080/')], contextPath: 'narasimha-app', onFailure: false, war: '**/*.war'
+              echo 'Successfully deployed into Tomcat server'
             }
         }
         
-        stage('Deploy into tomcat server') {
-            steps {
-                echo 'war file deployed'
-                deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://ec2-52-87-225-240.compute-1.amazonaws.com:8080/')], contextPath: 'mydevopsapp', war: '**/*.war'
-            }
-        }
+    
     }
 }
