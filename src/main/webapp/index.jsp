@@ -23,7 +23,7 @@
   </head>
   <body>
   <h1> Hello</h1>
-<h1>Thank You/h1>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div class="container">
