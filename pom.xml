@@ -17,12 +17,12 @@
 	<distributionManagement>
 		 <snapshotRepository>
 		    <id>NexusRepo</id>
-		    <url>http://13.201.166.145:8081/repository/Narasimha-snapshot/</url>
+		    <url>http://52.66.152.106:8081/repository/maven-snapshots/</url>
 		 </snapshotRepository>
 		
 		<repository>
 		    <id>Nexus-Repo</id>
-		    <url>http://13.201.166.145:8081/repository/Narasimha-release/</url>
+		    <url>http://52.66.152.106:8081/repository/maven-releases/</url>
 		</repository>
   	</distributionManagement>
 
