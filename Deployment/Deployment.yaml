@@ -22,6 +22,6 @@ spec:
     spec:
       containers:
         - name: fb1
-          image: devopshubg333/batch15d:python_flaskapp
+          image: reddy633/narasimhareddyrepo:xyz
           ports:
             - containerPort: 8080
