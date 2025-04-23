@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fb-deploy
+  labels:
+    app: fb
+    env: deploy
+spec:
+  selector:
+    matchLabels:
+      app: facebook
+
+  replicas: 3
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        app: facebook
+
+        version: AC_V1
+    spec:
+      containers:
+        - name: fb1
+          image: devopshubg333/batch15d:python_flaskapp
+          ports:
+            - containerPort: 8080
