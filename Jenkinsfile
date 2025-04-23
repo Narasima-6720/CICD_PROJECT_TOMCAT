@@ -1,32 +1,52 @@
 pipeline {
     agent any
-    
-    triggers{
-        githubPush()
+    tools {
+        maven 'maven3'
     }
 
     stages {
-        stage('CLONE FROM GITHUB') {
+        stage('Checkout SCM') {
             steps {
+                echo 'Checkout from git'
                 git branch: 'main', url: 'https://github.com/Narasima-6720/CICD_PROJECT_TOMCAT.git'
-                echo 'successfully cloned the repo'
+            }
+        }
+        stage('Scanning the code') {
+            steps {
+                echo 'Scan the code'
+                sh 'ls -ltr'
+                sh '''mvn sonar:sonar \\
+                    -Dsonar.host.url=http://54.237.123.81:9000 \\
+                    -Dsonar.login=squ_7d3d30dab6dbbe9d104b070be7eebc1aa1034743'''
+            }
+        }
+        stage('Build Code') {
+            steps {
+                echo 'Building the code'
+                sh 'mvn clean package'
+            }
+        }
+        stage('Docker image') {
+            steps {
+                echo 'Creating the image'
+                sh 'docker build -t reddy633/narasimhareddyrepo:${BUILD_NUMBER} .'
             }
         }
         
-        stage('Build the code') {
+       stage('Push to Dockerhub') {
             steps {
-                sh 'mvn clean install'
-                echo 'Successfully build....'
+			 script {
+			withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) 
+			{
+            sh 'docker login -u reddy633 -p ${dockerhub}'
+			
+			 }
+			   sh 'docker push reddy633/narasimhareddyrepo:${BUILD_NUMBER}'
+			   
+           
+				}
+				
             }
         }
-         
-          stage('Deploy to the container') {
-            steps {
-              deploy adapters: [tomcat9(credentialsId: 'my-tomcat', path: '', url: 'http://ec2-13-203-205-64.ap-south-1.compute.amazonaws.com:8080/')], contextPath: 'narasimha-app', onFailure: false, war: '**/*.war'
-              echo 'Successfully deployed into Tomcat server'
-            }
-        }
-        
-    
     }
 }
