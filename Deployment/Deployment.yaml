@@ -22,6 +22,6 @@ spec:
     spec:
       containers:
         - name: fb1
-          image: reddy633/narasimhareddyrepo:xyz
+          image: reddy633/narasimhareddyrepo:14
           ports:
             - containerPort: 8080
