@@ -53,6 +53,7 @@
     </style>
   </head>
   <body>
+<h1>New Feature is Added</h1>
     <div class="highlight-box">
       <h2>
         🚀 Successfully implemented a CI/CD pipeline using
