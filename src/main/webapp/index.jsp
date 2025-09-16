@@ -53,7 +53,7 @@
     </style>
   </head>
   <body>
-<h1>My Portfolio</h1>
+
 <h1>New Feature is Added</h1>
     <div class="highlight-box">
       <h2>
