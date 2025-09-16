@@ -62,7 +62,7 @@
         <strong>Jenkins</strong>, <strong>Maven</strong>,
         <strong>Docker</strong>, <strong>Kubernetes</strong>, and
         <strong>ArgoCD</strong><br />
-        to build, test, and deploy a production-ready application with full
+        Build,test, and deploy a production-ready application with full
         automation.
       </h2>
     </div>
