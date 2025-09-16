@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CI/CD Project Showcase</title>
+    <title>My Portflio</title>
     <style>
       body {
         margin: 0;
@@ -53,6 +53,7 @@
     </style>
   </head>
   <body>
+<h1>My Portfolio</h1>
 <h1>New Feature is Added</h1>
     <div class="highlight-box">
       <h2>
