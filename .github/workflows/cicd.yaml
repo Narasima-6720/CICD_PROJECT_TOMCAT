@@ -1,0 +1,26 @@
+name: Github Action project to deploy Game of life project to Tomcat
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Build with Maven
+        run: mvn clean package
+
+      - name: Deploy to Tomcat server
+        run: |
+          WAR_FILE=$(ls gameoflife-web/target/*.war | head -n 1) 
+          APP_NAME=gameoflife
+          curl -u "${{secrets.TOMCAT_USERNAME}}:${{secrets.TOMCAT_PASSWORD}}" \
+          --upload-file "$WAR_FILE" \
+          "http://${{secrets.HOST_URL}}:8080/manager/text/deploy?path=/$APP_NAME&update=true"
+          
+
+      
