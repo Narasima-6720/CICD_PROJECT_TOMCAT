@@ -16,7 +16,7 @@ jobs:
 
       - name: Deploy to Tomcat server
         run: |
-          WAR_FILE=$(ls gameoflife-web/target/*.war | head -n 1) 
+          WAR_FILE=$(ls target/*.war | head -n 1) 
           APP_NAME=gameoflife
           curl -u "${{secrets.TOMCAT_USERNAME}}:${{secrets.TOMCAT_PASSWORD}}" \
           --upload-file "$WAR_FILE" \
