@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout the code
         uses: actions/checkout@v3
@@ -17,7 +17,7 @@ jobs:
       - name: Deploy to Tomcat server
         run: |
           WAR_FILE=$(ls target/*.war | head -n 1) 
-          APP_NAME=gameoflife
+          APP_NAME=Myapp
           curl -u "${{secrets.TOMCAT_USERNAME}}:${{secrets.TOMCAT_PASSWORD}}" \
           --upload-file "$WAR_FILE" \
           "http://${{secrets.HOST_URL}}:8080/manager/text/deploy?path=/$APP_NAME&update=true"
