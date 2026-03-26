@@ -17,12 +17,12 @@
 	<distributionManagement>
 		 <snapshotRepository>
 		    <id>Nexus-Repo</id>
-		    <url>http://34.204.18.72:8081/repository/Devops-snapshotrepo/</url>
+		    <url>http://100.29.39.58:8081/repository/snapshot-repo/</url>
 		 </snapshotRepository>
 		
 		<repository>
 		    <id>Nexus-Repo</id>
-		    <url>http://34.204.18.72:8081/repository/Devops-Relrepo/</url>
+		    <url>http://100.29.39.58:8081/repository/release-repo/</url>
 		</repository>
   	</distributionManagement>
 
