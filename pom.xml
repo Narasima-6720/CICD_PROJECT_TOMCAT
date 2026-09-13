@@ -16,13 +16,13 @@
 
 	<distributionManagement>
 		 <snapshotRepository>
-		    <id>Nexus-Repo</id>
-		    <url>http://100.29.39.58:8081/repository/snapshot-repo/</url>
+		    <id>NexusRepo</id>
+		    <url>http://98.93.85.147:8081/repository/narasimha-snapshotrepo/</url>
 		 </snapshotRepository>
 		
 		<repository>
-		    <id>Nexus-Repo</id>
-		    <url>http://100.29.39.58:8081/repository/release-repo/</url>
+		    <id>NexusRepo</id>
+		    <url>http://98.93.85.147:8081/repository/narasimha-releaserepo/</url>
 		</repository>
   	</distributionManagement>
 
