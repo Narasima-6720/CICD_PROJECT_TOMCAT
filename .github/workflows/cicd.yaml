@@ -1,4 +1,5 @@
-name: Github Action project to deploy Game of life project to Tomcat
+---
+name: Build and deploy into tomcat
 on:
   push:
     branches:
@@ -6,21 +7,18 @@ on:
   workflow_dispatch:
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout the code
+      - name: Clone the code
         uses: actions/checkout@v3
 
-      - name: Build with Maven
+      - name: Build code and generate the war file
         run: mvn clean package
 
-      - name: Deploy to Tomcat server
+      - name: Deploy into the tomcat
         run: |
-          WAR_FILE=$(ls target/*.war | head -n 1) 
-          APP_NAME=Myapp
-          curl -u "${{secrets.TOMCAT_USERNAME}}:${{secrets.TOMCAT_PASSWORD}}" \
-          --upload-file "$WAR_FILE" \
-          "http://${{secrets.HOST_URL}}:8080/manager/text/deploy?path=/$APP_NAME&update=true"
-          
-
-      
+              WAR_FILE=$(ls target/*.war | head -n 1)
+              APP_NAME=mnrapp
+              curl -u "${{ secrets.TOMCAT_USERNAME }}:${{ secrets.TOMCAT_PASSWORD }}" \
+                --upload-file "$WAR_FILE" \
+                "http://${{ secrets.TOMCAT_HOST }}:8081/manager/text/deploy?path=/$APP_NAME&update=true"
